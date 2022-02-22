@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'employees.apps.EmployeesConfig',
+    'clients.apps.ClientsConfig'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,12 @@ WSGI_APPLICATION = 'backtur.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'std_949_travel_agency',
+        'HOST': 'std-mysql',
+        'PORT': '3306',
+        'USER': 'std_949_travel_agency',
+        'PASSWORD': '123456789'
     }
 }
 
