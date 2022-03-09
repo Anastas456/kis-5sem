@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
-from employees.views import EmployeeViewSet, OrganizationViewSet
+from employees.api import EmployeeViewSet, OrganizationViewSet
+from employees.views import employee_list, employee_detail
 from clients.views import ClientViewSet, RussianPassportViewSet, InternationalPassportViewSet
 
 
@@ -29,7 +30,8 @@ router.register('russian_passports', RussianPassportViewSet)
 router.register('international_passports', InternationalPassportViewSet)
 
 urlpatterns = [
-    # Добавить нормальный путь на пустую строку
     path('admin/', admin.site.urls),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('api/employees/', employee_list),
+    re_path(r'api/employees/(?P<pk>[0-9]+)$', employee_detail)
 ]
