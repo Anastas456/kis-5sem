@@ -18,7 +18,8 @@ from django.urls import path, include, re_path
 from rest_framework import routers
 from employees.api import EmployeeViewSet, OrganizationViewSet
 from employees.views import employee_list, employee_detail
-from clients.views import ClientViewSet, RussianPassportViewSet, InternationalPassportViewSet
+from clients.api import ClientViewSet, RussianPassportViewSet, InternationalPassportViewSet
+from clients.views import clients_list, client_detail, rus_pas_by_client, rus_pas_detail
 
 
 router = routers.DefaultRouter()
@@ -33,5 +34,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api/employees/', employee_list),
-    re_path(r'api/employees/(?P<pk>[0-9]+)$', employee_detail)
+    re_path(r'api/employees/(?P<pk>[0-9]+)$', employee_detail),
+    path('api/clients/', clients_list),
+    re_path(r'api/clients/(?P<pk>[0-9]+)$', client_detail),
+    re_path(r'api/russian_passport$', rus_pas_by_client),
+    re_path(r'api/russian_passport/(?P<pk>[0-9]+)$', rus_pas_detail)
 ]
