@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'employees.apps.EmployeesConfig',
     'clients.apps.ClientsConfig',
-    'corsheaders'
+    'corsheaders',
+    'preliminary_agreements.apps.PreliminaryAgreementsConfig'
 ]
 
 MIDDLEWARE = [

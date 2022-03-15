@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework import routers
 from employees.api import EmployeeViewSet, OrganizationViewSet
-from employees.views import employee_list, employee_detail
+from employees.views import employee_list, employee_detail, employee_by_organization
 from clients.api import ClientViewSet, RussianPassportViewSet, InternationalPassportViewSet
 from clients.views import clients_list, client_detail, rus_pas_by_client, rus_pas_detail
+from preliminary_agreements.api import CountryViewSet, CityViewSet, PreliminaryAgreementViewSet, VisitingCityViewSet
+from preliminary_agreements.views import agreements_list, agreement_detail, cities_by_country, visiting_cities_list, visiting_cities_by_agreement
 
 
 router = routers.DefaultRouter()
@@ -30,6 +32,11 @@ router.register('clients', ClientViewSet)
 router.register('russian_passports', RussianPassportViewSet)
 router.register('international_passports', InternationalPassportViewSet)
 
+router.register('countries', CountryViewSet)
+router.register('cities', CityViewSet)
+router.register('preliminary_agreements', PreliminaryAgreementViewSet)
+router.register('visiting_cities', VisitingCityViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
@@ -38,5 +45,11 @@ urlpatterns = [
     path('api/clients/', clients_list),
     re_path(r'api/clients/(?P<pk>[0-9]+)$', client_detail),
     re_path(r'api/russian_passport$', rus_pas_by_client),
-    re_path(r'api/russian_passport/(?P<pk>[0-9]+)$', rus_pas_detail)
+    re_path(r'api/russian_passport/(?P<pk>[0-9]+)$', rus_pas_detail),
+    path('api/preliminary_agreements/', agreements_list),
+    re_path(r'api/employees_by_org$', employee_by_organization),
+    re_path(r'api/preliminary_agreements/(?P<pk>[0-9]+)$', agreement_detail),
+    re_path(r'api/cities$', cities_by_country),
+    path('api/cities/', visiting_cities_list),
+    re_path(r'api/visiting_cities$', visiting_cities_by_agreement)
 ]

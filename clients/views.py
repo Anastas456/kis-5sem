@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from rest_framework import status
-from django.core.exceptions import ObjectDoesNotExist
+# from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Client, Russian_passport
 from .serializers import ClientSerializer, RussianPassportSerializer

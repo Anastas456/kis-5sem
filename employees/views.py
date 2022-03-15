@@ -50,3 +50,15 @@ def employee_detail(request, pk):
             pass
             # print(e)
         return JsonResponse({'message': 'Employee was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def employee_by_organization(request):
+    
+    if request.method == 'GET': 
+        employees = Employee.objects.all()
+        organization = request.GET.get('organization', None)
+        filtered_employees = employees.filter(organization__exact=organization)
+        employee_serializer = EmployeeSerializer(filtered_employees, many=True)
+        return JsonResponse(employee_serializer.data, safe=False)
