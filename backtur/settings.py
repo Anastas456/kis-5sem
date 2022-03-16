@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+from contracts.apps import ContractsConfig
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,7 +43,8 @@ INSTALLED_APPS = [
     'employees.apps.EmployeesConfig',
     'clients.apps.ClientsConfig',
     'corsheaders',
-    'preliminary_agreements.apps.PreliminaryAgreementsConfig'
+    'preliminary_agreements.apps.PreliminaryAgreementsConfig',
+    'contracts.apps.ContractsConfig'
 ]
 
 MIDDLEWARE = [

@@ -41,7 +41,7 @@ class Preliminary_agreement(models.Model):
         db_table = 'preliminary_agreement'
 
     def __str__(self):
-        return self.date_of_agreement
+        return str(self.date_of_agreement)
 
 
 class Visiting_city(models.Model):
