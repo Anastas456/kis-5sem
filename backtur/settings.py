@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'clients.apps.ClientsConfig',
     'corsheaders',
     'preliminary_agreements.apps.PreliminaryAgreementsConfig',
-    'contracts.apps.ContractsConfig'
+    'contracts.apps.ContractsConfig',
+    'payments.apps.PaymentsConfig'
 ]
 
 MIDDLEWARE = [

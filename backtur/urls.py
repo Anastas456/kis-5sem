@@ -24,6 +24,8 @@ from preliminary_agreements.api import CountryViewSet, CityViewSet, PreliminaryA
 from preliminary_agreements.views import agreements_list, agreement_detail, cities_by_country, visiting_cities_list, visiting_cities_by_agreement
 from contracts.api import ContractViewSet, TripMemberViewSet, HotelViewSet, HotelReservationViewSet, RouteViewSet
 from contracts.views import contracts_list, trip_members_by_contract, routes_by_agreement, add_trip_member, contract_detail, add_route, hotel_reservation_list
+from payments.api import CurrencyViewSet, PaymentViewSet
+from payments.views import payments_list, contracts_by_organization
 
 
 router = routers.DefaultRouter()
@@ -44,6 +46,9 @@ router.register('trip_members', TripMemberViewSet),
 router.register('hotels', HotelViewSet),
 router.register('hotel_reservations', HotelReservationViewSet),
 router.register('routes', RouteViewSet)
+
+router.register('currency', CurrencyViewSet),
+router.register('payments', PaymentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -67,4 +72,6 @@ urlpatterns = [
     re_path(r'api/contracts/(?P<pk>[0-9]+)$', contract_detail),
     path('api/add_route/', add_route),
     path('api/hotel_reservation_list/', hotel_reservation_list),
+    path('api/payments/', payments_list),
+    re_path(r'api/filtered_contracts$', contracts_by_organization),
 ]
