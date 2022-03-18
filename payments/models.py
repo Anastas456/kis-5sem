@@ -5,7 +5,7 @@ from contracts.models import Contract
 class Currency(models.Model):
     code = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
-    rate = models.IntegerField()
+    rate = models.FloatField()
 
     class Meta:
         managed = False

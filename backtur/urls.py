@@ -25,7 +25,7 @@ from preliminary_agreements.views import agreements_list, agreement_detail, citi
 from contracts.api import ContractViewSet, TripMemberViewSet, HotelViewSet, HotelReservationViewSet, RouteViewSet
 from contracts.views import contracts_list, trip_members_by_contract, routes_by_agreement, add_trip_member, contract_detail, add_route, hotel_reservation_list
 from payments.api import CurrencyViewSet, PaymentViewSet
-from payments.views import payments_list, contracts_by_organization
+from payments.views import payments_list, contracts_by_organization, currency_list, get_last_currency
 
 
 router = routers.DefaultRouter()
@@ -74,4 +74,6 @@ urlpatterns = [
     path('api/hotel_reservation_list/', hotel_reservation_list),
     path('api/payments/', payments_list),
     re_path(r'api/filtered_contracts$', contracts_by_organization),
+    re_path(r'api/currency/', currency_list),
+    path('api/lt_currency/', get_last_currency)
 ]
